@@ -150,7 +150,16 @@ Notes:
 *********************************************************************/
 void insertionSortByLevel(Adventurer* roster, int iSize)
 {
-    std::cout << "insertionSortByLevel not implemented yet" << std::endl; 
+    for(int i = 0; i < iSize; i++)
+    {
+        for(int j = i; j > 0; j--)
+        {
+            if(roster[j].getLevel() < roster[j-1].getLevel())
+            {
+                std::swap(roster[j], roster[j-1]);
+            };
+        };
+    };
 }
 
 /*********************************************************************
@@ -168,7 +177,10 @@ Notes:
 *********************************************************************/
 int linearSearchByName(Adventurer* roster, int iSize, const std::string& szTargetName)
 {
-    std::cout << "linearSearchByName not implemented yet" << std::endl; 
+    for(int i = 0; i < iSize; i++)
+    {
+        if(roster[i].getName() == szTargetName) return i;
+    };
     return -1;
 }
 
