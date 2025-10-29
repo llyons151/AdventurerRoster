@@ -121,7 +121,18 @@ Notes:
 *********************************************************************/
 void selectionSortByHP(Adventurer* roster, int iSize)
 {
-    std::cout << "selectionSortByHP not implemented yet" << std::endl; 
+    int iMinIndex;
+    for(int i = 0; i < iSize; i++)
+    {
+        iMinIndex = i;
+
+        for(int j = i + 1; j < iSize; j++)
+        {
+            if(roster[j].getHP() < roster[iMinIndex].getHP()) { iMinIndex = j; };
+        };
+
+        std::swap(roster[i], roster[iMinIndex]);
+    };
 }
 
 /*********************************************************************
