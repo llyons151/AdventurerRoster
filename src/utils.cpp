@@ -100,7 +100,10 @@ Notes:
 *********************************************************************/
 void viewAdventurers(Adventurer* roster, int iSize)
 {
-    std::cout << "viewAdventurers not implemented yet" << std::endl; 
+    for(int i = 0; i < iSize; i++)
+    {
+        roster[i].displayAdventurer();
+    };
 }
 
 /*********************************************************************
