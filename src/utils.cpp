@@ -46,7 +46,44 @@ Notes:
 *********************************************************************/
 void addAdventurer(Adventurer*& roster, int& iSize, int& iCapacity)
 {
-    std::cout << "addAdventurer not implemented yet" << std::endl; 
+    std::string szName;
+    std::string szClass;
+    int iLevel;
+    int iHitPoints;
+
+    std::cout << "Enter adventurer's name: ";
+    std::cin >> szName;
+
+    std::cout << "Enter adventurer's class: ";
+    std::cin >> szClass;
+
+    std::cout << "Enter adventurer's level: ";
+    std::cin >> iLevel;
+
+    std::cout << "Enter adventurer's hit points: ";
+    std::cin >> iHitPoints;
+
+    if(iSize == iCapacity)
+    {
+        Adventurer* tempRoster = new Adventurer[iCapacity + 10];
+
+        for(int i = 0; i < iSize; i++)
+        {
+            tempRoster[i] = roster[i];
+        };
+        delete[] roster;
+        roster = tempRoster;
+        iCapacity += 10;
+    };
+
+    roster[iSize].setName(szName);
+    roster[iSize].setClass(szClass);
+    roster[iSize].setLevel(iLevel);
+    roster[iSize].setHP(iHitPoints);
+
+    iSize++;
+
+    std::cout << "Adventurer added successfully!\n";
 }
 
 /*********************************************************************
