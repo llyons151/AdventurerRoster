@@ -17,7 +17,18 @@ Notes:
 *********************************************************************/
 void displayMenu(std::string szMenuName, std::string szChoicesArr[], int iChoices)
 {
-    std::cout << "displayMenu not implemented yet" << std::endl; 
+    std::cout << szMenuName << std::endl; 
+    std::cout << szBreakMessage; 
+    for(int i = 0; i < iChoices; i++)
+    {
+        if(szChoicesArr[i] == "Exit")
+        {
+            std::cout << "-1. " << szChoicesArr[i] << std::endl;
+            break;
+        };
+        std::cout << i + 1 << ". " << szChoicesArr[i] << std::endl;
+    };
+    std::cout << szBreakMessage;
 }
 
 /*********************************************************************
