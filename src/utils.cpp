@@ -51,10 +51,10 @@ void addAdventurer(Adventurer*& roster, int& iSize, int& iCapacity)
     int iHitPoints;
 
     std::cout << "Enter adventurer's name: ";
-    std::cin >> szName;
+    std::getline(std::cin >> std::ws, szName);   
 
     std::cout << "Enter adventurer's class: ";
-    std::cin >> szClass;
+    std::getline(std::cin >> std::ws, szClass);   
 
     std::cout << "Enter adventurer's level: ";
     std::cin >> iLevel;
@@ -127,7 +127,7 @@ void selectionSortByHP(Adventurer* roster, int iSize)
 
         for(int j = i + 1; j < iSize; j++)
         {
-            if(roster[j].getHP() < roster[iMinIndex].getHP()) { iMinIndex = j; };
+            if(roster[j].getHP() > roster[iMinIndex].getHP()) { iMinIndex = j; };
         };
 
         std::swap(roster[i], roster[iMinIndex]);
@@ -209,11 +209,11 @@ int binarySearchByHP(Adventurer* roster, int iSize, int iTargetHP)
 
         if(roster[iMiddle].getHP() > iTargetHP)
         {
-            iStart = iMiddle - 1;
+            iStart = iMiddle + 1;
         }
         else
         {
-            iLast = iMiddle + 1;
+            iLast = iMiddle - 1;
         };
     };
     return -1;
