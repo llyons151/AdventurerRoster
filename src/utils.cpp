@@ -1,6 +1,5 @@
 #include "adventurer.h"
 
-
 /*********************************************************************
 void displayMenu(string szMenuName, string szChoicesArr[], int iChoices)
 Purpose:
@@ -199,12 +198,58 @@ Notes:
 *********************************************************************/
 int binarySearchByHP(Adventurer* roster, int iSize, int iTargetHP)
 {
-    std::cout << "binarySearchByHP not implemented yet" << std::endl;
+    int iStart = 0;
+    int iLast = iSize - 1;
+    int iMiddle;
+
+    while(iStart <= iLast)
+    {
+        iMiddle = (iStart + iLast) / 2;
+        if(roster[iMiddle].getHP() == iTargetHP) return iMiddle;
+
+        if(roster[iMiddle].getHP() > iTargetHP)
+        {
+            iStart = iMiddle - 1;
+        }
+        else
+        {
+            iLast = iMiddle + 1;
+        };
+    };
     return -1;
 }
 
 // Extra credit (You must document yourself)
+/*********************************************************************
+void insertionSortByLevelWithStats(Adventurer* roster, int iSize, int& iComparisons, int& iSwaps)
+Purpose:
+    Sorts the roster by level in ascending order using insertion sort.
+    Counts the number of comparisons and swaps made during sorting.
+Parameters:
+    I/O Adventurer* roster  Dynamic roster of adventurers
+    I   int iSize           Current number of adventurers
+    O   int& iComparisons   Total number of comparisons
+    O   int& iSwaps         Total number of swaps
+Return Value:
+    None
+Notes:
+    - Must not use pre-made sorting libraries.
+    - Sorts in ascending order by level.
+*********************************************************************/
 void insertionSortByLevelWithStats(Adventurer* roster, int iSize, int& iComparisons, int& iSwaps)
 {
-	std::cout << "Not implemented" << std::endl;
+    iSwaps = 0;
+    iComparisons = 0;
+    for(int i = 0; i < iSize; i++)
+    {
+        for(int j = i; j > 0; j--)
+        {
+            iComparisons += 1;
+            if(roster[j].getLevel() < roster[j-1].getLevel())
+            {
+                std::swap(roster[j], roster[j-1]);
+                iSwaps += 1;
+            };
+        };
+    };
 }
