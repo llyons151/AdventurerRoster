@@ -238,18 +238,32 @@ Notes:
 *********************************************************************/
 void insertionSortByLevelWithStats(Adventurer* roster, int iSize, int& iComparisons, int& iSwaps)
 {
-    iSwaps = 0;
     iComparisons = 0;
-    for(int i = 0; i < iSize; i++)
+    iSwaps = 0;
+
+    for (int i = 1; i < iSize; ++i)
     {
-        for(int j = i; j > 0; j--)
+        Adventurer temp = roster[i];   
+        iSwaps++;                     
+        int j = i - 1;
+
+        while (j >= 0)
         {
-            iComparisons += 1;
-            if(roster[j].getLevel() < roster[j-1].getLevel())
+            iComparisons++;            
+
+            if (roster[j].getLevel() > temp.getLevel())
             {
-                std::swap(roster[j], roster[j-1]);
-                iSwaps += 1;
+                roster[j + 1] = roster[j]; 
+                iSwaps++;                 
+                j--;
+            }
+            else
+            {
+                break; 
             };
-        };
-    };
+        }
+
+        roster[j + 1] = temp;          
+        iSwaps++;                     
+    }
 }
